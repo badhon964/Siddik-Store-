@@ -1,0 +1,146 @@
+<!DOCTYPE html>
+<html lang="bn">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="description" content="মেসার্স সিদ্দিক স্টোর - জঙ্গলপাড়া বোডঘর বাজার, জামালপুর">
+<title>মেসার্স সিদ্দিক স্টোর</title>
+<style>
+*{box-sizing:border-box}
+body{margin:0;font-family:Arial,"Noto Sans Bengali",sans-serif;background:#f5f7f9;color:#222}
+header{background:linear-gradient(135deg,#087f5b,#0b6b4f);color:white;padding:18px 14px;position:sticky;top:0;z-index:10}
+.header{max-width:1100px;margin:auto;display:flex;justify-content:space-between;align-items:center;gap:12px}
+.logo{font-size:22px;font-weight:800}.tag{font-size:12px;opacity:.9}
+.cart{background:white;color:#087f5b;border:0;border-radius:22px;padding:10px 14px;font-weight:bold}
+.hero{background:white;padding:28px 15px;text-align:center}
+.hero h1{margin:0 0 8px;color:#087f5b}.hero p{margin:6px;color:#555}
+.search{max-width:650px;margin:18px auto 0;display:flex;gap:8px}
+.search input{flex:1;padding:13px;border:1px solid #ddd;border-radius:10px;font-size:16px}
+.container{max-width:1100px;margin:auto;padding:18px 14px}
+.categories{display:flex;gap:8px;overflow:auto;padding-bottom:12px}
+.categories button{white-space:nowrap;border:0;background:white;padding:10px 14px;border-radius:20px;box-shadow:0 2px 8px #00000010}
+.categories button.active{background:#087f5b;color:white}
+.grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(160px,1fr));gap:12px}
+.card{background:white;border-radius:14px;padding:14px;box-shadow:0 3px 12px #0000000d}
+.icon{font-size:42px;text-align:center;padding:10px}
+.card h3{margin:7px 0;font-size:17px}.price{font-size:18px;font-weight:bold;color:#087f5b}
+.unit{font-size:12px;color:#777}.add{width:100%;margin-top:10px;border:0;background:#087f5b;color:white;padding:10px;border-radius:9px;font-weight:bold}
+.info{margin-top:18px;background:#fff;border-radius:14px;padding:18px}
+.info h2{color:#087f5b;margin-top:0}
+footer{margin-top:25px;background:#123;color:#fff;text-align:center;padding:24px 14px}
+footer a{color:#fff}
+.modal{display:none;position:fixed;inset:0;background:#0008;z-index:20;padding:20px}
+.modalbox{background:white;max-width:520px;margin:30px auto;padding:20px;border-radius:16px;max-height:90vh;overflow:auto}
+.close{float:right;border:0;background:#eee;border-radius:50%;width:32px;height:32px}
+.cartrow{display:flex;justify-content:space-between;border-bottom:1px solid #eee;padding:10px 0}
+.total{font-size:20px;font-weight:bold;margin:15px 0}
+form input,form textarea,form select{width:100%;padding:12px;margin:6px 0 10px;border:1px solid #ddd;border-radius:8px}
+.submit{width:100%;background:#087f5b;color:#fff;border:0;padding:13px;border-radius:9px;font-size:16px;font-weight:bold}
+.note{font-size:12px;color:#666}
+@media(max-width:480px){.logo{font-size:18px}.hero h1{font-size:25px}.grid{grid-template-columns:repeat(2,1fr)}.card{padding:10px}}
+</style>
+</head>
+<body>
+<header>
+  <div class="header">
+    <div><div class="logo">মেসার্স সিদ্দিক স্টোর</div><div class="tag">জঙ্গলপাড়া বোডঘর বাজার, জামালপুর</div></div>
+    <button class="cart" onclick="openCart()">🛒 কার্ট (<span id="count">0</span>)</button>
+  </div>
+</header>
+
+<section class="hero">
+  <h1>আপনার নিত্যপ্রয়োজনীয় পণ্যের দোকান</h1>
+  <p>খুচরা ও পাইকারি বিক্রয় • অর্ডার করুন মোবাইল থেকেই</p>
+  <div class="search"><input id="search" oninput="render()" placeholder="পণ্য খুঁজুন..."></div>
+</section>
+
+<main class="container">
+  <div class="categories">
+    <button class="active" onclick="setCat('সব',this)">সব</button>
+    <button onclick="setCat('মুদি',this)">মুদি</button>
+    <button onclick="setCat('চাল-ডাল',this)">চাল-ডাল</button>
+    <button onclick="setCat('খাদ্য',this)">গরুর খাদ্য/ভুসি</button>
+    <button onclick="setCat('গ্যাস',this)">গ্যাস</button>
+  </div>
+  <div id="products" class="grid"></div>
+
+  <div class="info">
+    <h2>📞 যোগাযোগ</h2>
+    <p>প্রোঃ সিদ্দিকুর রহমান</p>
+    <p>📱 <a href="tel:01919253807">০১৯১৯-২৫৩৮০৭</a></p>
+    <p>📱 <a href="tel:01339306911">০১৩৩৯-৩০৬৯১১</a></p>
+    <p>💳 বিকাশ: ০১৯৬১০০৫০৭৬</p>
+    <p>📍 জঙ্গলপাড়া বোডঘর বাজার, জামালপুর</p>
+  </div>
+</main>
+
+<footer>
+  <strong>মেসার্স সিদ্দিক স্টোর</strong><br>
+  খুচরা ও পাইকারি বিক্রয়<br>
+  <small>ওয়েবসাইট ডেমো — পণ্যের দাম প্রয়োজন অনুযায়ী পরিবর্তন করুন</small>
+</footer>
+
+<div id="modal" class="modal">
+ <div class="modalbox">
+  <button class="close" onclick="closeCart()">×</button>
+  <h2>🛒 আপনার অর্ডার</h2>
+  <div id="cartItems"></div>
+  <div class="total">মোট: ৳<span id="total">0</span></div>
+  <form onsubmit="sendOrder(event)">
+    <label>আপনার নাম</label><input id="name" required>
+    <label>মোবাইল নম্বর</label><input id="phone" type="tel" required>
+    <label>ঠিকানা</label><textarea id="address" rows="3" required></textarea>
+    <label>পেমেন্ট</label>
+    <select id="payment"><option>ক্যাশ অন ডেলিভারি</option><option>বিকাশ</option></select>
+    <button class="submit">WhatsApp-এ অর্ডার পাঠান</button>
+    <p class="note">অর্ডার পাঠালে WhatsApp খুলবে। WhatsApp নম্বরটি নিচের JS কোডে পরিবর্তন করতে পারবেন।</p>
+  </form>
+ </div>
+</div>
+
+<script>
+const products=[
+ {id:1,name:"চিনি",price:135,unit:"প্রতি কেজি",cat:"মুদি",icon:"🧂"},
+ {id:2,name:"মিনিকেট/সাধারণ চাল",price:65,unit:"প্রতি কেজি",cat:"চাল-ডাল",icon:"🍚"},
+ {id:3,name:"মসুর ডাল",price:95,unit:"প্রতি কেজি",cat:"চাল-ডাল",icon:"🫘"},
+ {id:4,name:"আটা",price:65,unit:"প্রতি কেজি",cat:"মুদি",icon:"🌾"},
+ {id:5,name:"ময়দা",price:70,unit:"প্রতি কেজি",cat:"মুদি",icon:"🌾"},
+ {id:6,name:"গমের ভুসি",price:60,unit:"প্রতি কেজি",cat:"খাদ্য",icon:"🐄"},
+ {id:7,name:"গরুর খাদ্য",price:75,unit:"প্রতি কেজি",cat:"খাদ্য",icon:"🐮"},
+ {id:8,name:"১২ কেজি LPG গ্যাস",price:1730,unit:"প্রতি সিলিন্ডার",cat:"গ্যাস",icon:"🔥"}
+];
+let cat="সব",cart=[];
+function setCat(c,el){cat=c;document.querySelectorAll(".categories button").forEach(b=>b.classList.remove("active"));el.classList.add("active");render()}
+function render(){
+ const q=document.getElementById("search").value.toLowerCase();
+ const list=products.filter(p=>(cat==="সব"||p.cat===cat)&&p.name.toLowerCase().includes(q));
+ document.getElementById("products").innerHTML=list.map(p=>`
+ <div class="card"><div class="icon">${p.icon}</div><h3>${p.name}</h3>
+ <div class="price">৳${p.price.toLocaleString("bn-BD")}</div><div class="unit">${p.unit}</div>
+ <button class="add" onclick="add(${p.id})">কার্টে যোগ করুন</button></div>`).join("");
+}
+function add(id){let x=cart.find(i=>i.id===id);if(x)x.qty++;else cart.push({id,qty:1});update()}
+function update(){document.getElementById("count").textContent=cart.reduce((s,i)=>s+i.qty,0)}
+function openCart(){document.getElementById("modal").style.display="block";drawCart()}
+function closeCart(){document.getElementById("modal").style.display="none"}
+function drawCart(){
+ let total=0;
+ document.getElementById("cartItems").innerHTML=cart.length?cart.map(i=>{
+  let p=products.find(x=>x.id===i.id), sub=p.price*i.qty;total+=sub;
+  return `<div class="cartrow"><span>${p.name} × ${i.qty}</span><strong>৳${sub.toLocaleString("bn-BD")}</strong></div>`;
+ }).join(""):"<p>কার্ট খালি।</p>";
+ document.getElementById("total").textContent=total.toLocaleString("bn-BD");
+}
+function sendOrder(e){
+ e.preventDefault();
+ if(!cart.length){alert("আগে পণ্য কার্টে যোগ করুন");return}
+ const name=document.getElementById("name").value,phone=document.getElementById("phone").value,address=document.getElementById("address").value,pay=document.getElementById("payment").value;
+ let total=0,lines=cart.map(i=>{let p=products.find(x=>x.id===i.id),s=p.price*i.qty;total+=s;return `${p.name} x ${i.qty} = ৳${s}`}).join("\n");
+ const msg=`মেসার্স সিদ্দিক স্টোরে নতুন অর্ডার\n\nনাম: ${name}\nমোবাইল: ${phone}\nঠিকানা: ${address}\nপেমেন্ট: ${pay}\n\n${lines}\n\nমোট: ৳${total}`;
+ const whatsappNumber="8801919253807"; // আপনার WhatsApp নম্বর হলে এখানে বদলান
+ window.open(`https://wa.me/${whatsappNumber}?text=${encodeURIComponent(msg)}`,"_blank");
+}
+render();
+</script>
+</body>
+</html>
