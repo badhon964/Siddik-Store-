@@ -69,7 +69,7 @@ form input,form textarea,form select{width:100%;padding:12px;margin:6px 0 10px;b
     <p>প্রোঃ সিদ্দিকুর রহমান</p>
     <p>📱 <a href="tel:01919253807">০১৯১৯-২৫৩৮০৭</a></p>
     <p>📱 <a href="tel:01339306911">০১৩৩৯-৩০৬৯১১</a></p>
-    <p>💳 বিকাশ: ০১৯৬১০০৫০৭৬</p>
+    <p>💳 বিকাশ পেমেন্ট : ০১৯৬১০০৫০৭৬</p>
     <p>📍 জঙ্গলপাড়া বোডঘর বাজার, জামালপুর</p>
   </div>
 </main>
@@ -107,7 +107,7 @@ const products=[
  {id:5,name:"ময়দা",price:70,unit:"প্রতি কেজি",cat:"মুদি",icon:"🌾"},
  {id:6,name:"গমের ভুসি",price:60,unit:"প্রতি কেজি",cat:"খাদ্য",icon:"🐄"},
  {id:7,name:"গরুর খাদ্য",price:75,unit:"প্রতি কেজি",cat:"খাদ্য",icon:"🐮"},
- {id:8,name:"১২ কেজি LPG গ্যাস",price:1730,unit:"প্রতি সিলিন্ডার",cat:"গ্যাস",icon:"🔥"}
+ {id:8,name:"১২ কেজি LPG গ্যাস",price:1600,unit:"প্রতি সিলিন্ডার",cat:"গ্যাস",icon:"🔥"}
 ];
 let cat="সব",cart=[];
 function setCat(c,el){cat=c;document.querySelectorAll(".categories button").forEach(b=>b.classList.remove("active"));el.classList.add("active");render()}
@@ -137,7 +137,7 @@ function sendOrder(e){
  const name=document.getElementById("name").value,phone=document.getElementById("phone").value,address=document.getElementById("address").value,pay=document.getElementById("payment").value;
  let total=0,lines=cart.map(i=>{let p=products.find(x=>x.id===i.id),s=p.price*i.qty;total+=s;return `${p.name} x ${i.qty} = ৳${s}`}).join("\n");
  const msg=`মেসার্স সিদ্দিক স্টোরে নতুন অর্ডার\n\nনাম: ${name}\nমোবাইল: ${phone}\nঠিকানা: ${address}\nপেমেন্ট: ${pay}\n\n${lines}\n\nমোট: ৳${total}`;
- const whatsappNumber="8801919253807"; // আপনার WhatsApp নম্বর হলে এখানে বদলান
+ const whatsappNumber="8801339306911"; // আপনার WhatsApp নম্বর হলে এখানে বদলান
  window.open(`https://wa.me/${whatsappNumber}?text=${encodeURIComponent(msg)}`,"_blank");
 }
 render();
