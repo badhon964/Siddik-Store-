@@ -61,15 +61,16 @@ form input,form textarea,form select{width:100%;padding:12px;margin:6px 0 10px;b
     <button onclick="setCat('চাল-ডাল',this)">চাল-ডাল</button>
     <button onclick="setCat('খাদ্য',this)">গরুর খাদ্য/ভুসি</button>
     <button onclick="setCat('গ্যাস',this)">গ্যাস</button>
+    <button onclick="setCat('তেল',this)">তেল</button>
+    <button onclick="setCat('খেজুর',this)">খেজুর </button>
   </div>
   <div id="products" class="grid"></div>
-
   <div class="info">
     <h2>📞 যোগাযোগ</h2>
     <p>প্রোঃ সিদ্দিকুর রহমান</p>
     <p>📱 <a href="tel:01919253807">০১৯১৯-২৫৩৮০৭</a></p>
     <p>📱 <a href="tel:01339306911">০১৩৩৯-৩০৬৯১১</a></p>
-    <p>💳 বিকাশ: ০১৯৬১০০৫০৭৬</p>
+    <p>💳 বিকাশ পেমেন্ট : ০১৯৬১০০৫০৭৬</p>
     <p>📍 জঙ্গলপাড়া বোডঘর বাজার, জামালপুর</p>
   </div>
 </main>
@@ -100,16 +101,17 @@ form input,form textarea,form select{width:100%;padding:12px;margin:6px 0 10px;b
 
 <script>
 const products=[
- {id:1,name:"চিনি",price:135,unit:"প্রতি কেজি",cat:"মুদি",icon:"🧂"},
- {id:2,name:"মিনিকেট/সাধারণ চাল",price:65,unit:"প্রতি কেজি",cat:"চাল-ডাল",icon:"🍚"},
- {id:3,name:"মসুর ডাল",price:95,unit:"প্রতি কেজি",cat:"চাল-ডাল",icon:"🫘"},
- {id:4,name:"আটা",price:65,unit:"প্রতি কেজি",cat:"মুদি",icon:"🌾"},
+ {id:1,name:"চিনি",price:130,unit:"প্রতি কেজি",cat:"মুদি",icon:"🧂"},
+ {id:2,name:"মিনিকেট/সাধারণ চাল",price:60,unit:"প্রতি কেজি",cat:"চাল-ডাল",icon:"🍚"},
+ {id:3,name:"মসুর ডাল মোটা",price:90,unit:"প্রতি কেজি",cat:"চাল-ডাল",icon:"🫘"},
+ {id:4,name:"আটা",price:50,unit:"প্রতি কেজি",cat:"মুদি",icon:"🌾"},
  {id:5,name:"ময়দা",price:70,unit:"প্রতি কেজি",cat:"মুদি",icon:"🌾"},
- {id:6,name:"গমের ভুসি",price:60,unit:"প্রতি কেজি",cat:"খাদ্য",icon:"🐄"},
- {id:7,name:"গরুর খাদ্য",price:75,unit:"প্রতি কেজি",cat:"খাদ্য",icon:"🐮"},
- {id:8,name:"১২ কেজি LPG গ্যাস",price:1730,unit:"প্রতি সিলিন্ডার",cat:"গ্যাস",icon:"🔥"}
-];
-let cat="সব",cart=[];
+ {id:6,name:"গমের ভুসি",price:45,unit:"প্রতি কেজি",cat:"খাদ্য",icon:"🐄"},
+ {id:7,name:"গরুর খাদ্য",price:45,unit:"প্রতি কেজি",cat:"খাদ্য",icon:"🐮"},
+ {id:8,name:"১২ কেজি LPG গ্যাস",price:1600 unit:"প্রতি সিলিন্ডার",cat:"গ্যাস",icon:"🔥"} ];
+ {id:9,name:"৫ তেল",price:975 unit:"প্রতি লিটার",cat:"তেল",icon:"🧂"} ];
+ {id:8,name:"১২ কেজি খেজুর",price:320 unit:"প্রতি কেজি",cat:"মুদি",icon:"🫘"} ];
+  let cat="সব",cart=[];
 function setCat(c,el){cat=c;document.querySelectorAll(".categories button").forEach(b=>b.classList.remove("active"));el.classList.add("active");render()}
 function render(){
  const q=document.getElementById("search").value.toLowerCase();
