@@ -137,7 +137,7 @@ function sendOrder(e){
  const name=document.getElementById("name").value,phone=document.getElementById("phone").value,address=document.getElementById("address").value,pay=document.getElementById("payment").value;
  let total=0,lines=cart.map(i=>{let p=products.find(x=>x.id===i.id),s=p.price*i.qty;total+=s;return `${p.name} x ${i.qty} = ৳${s}`}).join("\n");
  const msg=`মেসার্স সিদ্দিক স্টোরে নতুন অর্ডার\n\nনাম: ${name}\nমোবাইল: ${phone}\nঠিকানা: ${address}\nপেমেন্ট: ${pay}\n\n${lines}\n\nমোট: ৳${total}`;
- const whatsappNumber="8801919253807"; // আপনার WhatsApp নম্বর হলে এখানে বদলান
+ const whatsappNumber="8801339306911"; // আপনার WhatsApp নম্বর হলে এখানে বদলান
  window.open(`https://wa.me/${whatsappNumber}?text=${encodeURIComponent(msg)}`,"_blank");
 }
 render();
